@@ -301,7 +301,7 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .vreq .sentpage h1{font-size:4.5rem;line-height:.98;letter-spacing:-.02em}
 .vreq .sentpage .reqgrid{padding:0;margin-top:2.25rem}
 .vreq .sentpage .receipt{margin-top:0}
-.vreq .sentpage aside .label{padding-top:1.75rem}
+.vreq .sentpage aside .label{padding-top:0}
 .vreq .receipt{margin-top:2.25rem;padding:1.75rem 2rem 1.5rem;background:var(--s0);box-shadow:inset 0 0 0 1px var(--s300)}
 .vreq .receipt .ref{margin-top:0}
 .vreq .receipt .summary{border-bottom-color:var(--s300)}.vreq .receipt .summary>div{border-color:var(--s300)}
