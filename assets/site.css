@@ -371,3 +371,12 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .pill .dot path{fill:var(--s900)}
 @media (max-width:699px){.pill{right:1rem;bottom:1rem;height:3rem;padding:0 1.25rem;font-size:.6875rem}}
 @media print{.pill{display:none}}
+
+/* outline buttons (comment, 1 Nov): hover lifts to white, a press sinks to Stone 200, keyboard focus is a Slate 600 ring; the arrow nudges on hover */
+.btn.ghost{transition:background .15s}
+.btn.ghost:hover{background:var(--s0)}
+.btn.ghost:active{background:var(--s200)}
+.btn:focus-visible{outline:2px solid var(--sl600);outline-offset:3px}
+.btn .arrow{transition:transform .15s}
+.btn:hover .arrow{transform:translateX(.25rem)}
+@media (prefers-reduced-motion:reduce){.btn .arrow{transition:none}}
