@@ -12,7 +12,7 @@
   // the bloom fades to 30% past the first screen; CSS does it where scroll timelines exist
   const b = d.querySelector('.bloom');
   if (b && !(window.CSS && CSS.supports('animation-timeline: scroll()'))) {
-    const f = () => { b.style.opacity = 1 - 0.7 * Math.min(1, scrollY / innerHeight); };
+    const f = () => { const p = scrollY / innerHeight; b.style.opacity = 1 - 0.7 * Math.min(1, p); b.style.setProperty('--bp', Math.min(1.5, p)); };
     addEventListener('scroll', f, { passive: true }); f();
   }
   // request form (prototype: nothing is sent)
