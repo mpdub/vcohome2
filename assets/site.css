@@ -276,6 +276,22 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .home-req .facts{margin-bottom:3.5rem}
 @media (max-width:699px){.home-people .people{grid-template-columns:1fr 1fr}.home-people .person:nth-child(5){display:none}}
 
+/* service pages: title, then the line and the facts as one element under it: the line left, the facts right */
+.vintro{position:relative;padding:3rem var(--gut) 1rem}
+.vintro h1{font-size:6rem;line-height:.98;letter-spacing:-.02em;margin-top:2rem}
+.keyset{display:grid;grid-template-columns:4fr 8fr;gap:0 3rem;margin-top:3rem;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.keyset .lede{margin:0;padding:1.5rem 0 2rem;max-width:30ch}
+.keyf{display:grid;grid-template-columns:1fr;margin:0;align-content:start}
+.keyf>div{padding:1.125rem 0 1.25rem}
+.keyf>div+div{border-top:1px solid var(--hair)}
+.keyf.q{grid-template-columns:1fr 1fr}
+.keyf.q>div:nth-child(2){border-top:0}
+.keyf.q>div:nth-child(even){padding-left:1.5rem;border-left:1px solid var(--hair)}
+.keyf dt{font:400 .6875rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+.keyf dd{margin:.5rem 0 0;font-size:1rem;line-height:1.4}
+@media (max-width:899px){.keyset{grid-template-columns:1fr}.keyf{border-top:1px solid var(--hair)}}
+@media (max-width:699px){.vintro{padding:2rem var(--gut) .5rem}.vintro h1{font-size:3.5rem}.keyset{margin-top:2rem}.keyset .lede{padding:1.25rem 0 1.5rem}}
+
 /* request */
 .vreq .reqone,.vreq .reqgrid{padding-top:3.5rem;padding-bottom:7rem}
 .request{display:grid;grid-template-columns:1fr 37.5rem;gap:6rem;padding:3.5rem var(--gut) 7rem}
