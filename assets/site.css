@@ -276,31 +276,6 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .home-req .facts{margin-bottom:3.5rem}
 @media (max-width:699px){.home-people .people{grid-template-columns:1fr 1fr}.home-people .person:nth-child(5){display:none}}
 
-/* Request a valuation, always in the bottom right corner */
-.fab{position:fixed;right:var(--gut);bottom:1.75rem;z-index:30;display:flex;align-items:center;gap:.625rem;height:3.25rem;padding:0 1.375rem;background:var(--ink);color:var(--cream);font:400 .75rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;box-shadow:0 .5rem 1.5rem rgba(20,20,18,.2);transition:background .15s}
-.fab:hover{background:#34332f;color:var(--cream)}
-.fab .dot{width:6px;height:6px}
-.fab.inv{background:var(--cream);color:var(--ink);box-shadow:0 .5rem 1.5rem rgba(0,0,0,.35)}
-.fab.inv:hover{background:var(--white);color:var(--ink)}  /* over black: inverted (comment, 1 Nov) */
-@media (max-width:699px){.fab{right:1rem;bottom:1rem;height:3rem;padding:0 1.125rem;font-size:.6875rem}}
-@media print{.fab{display:none}}
-
-/* service pages: title, then the line and the facts as one element under it */
-.vintro{position:relative;padding:3rem var(--gut) 1rem}
-.vintro h1{font-size:6rem;line-height:.98;letter-spacing:-.02em;margin-top:2rem}
-.keyset{display:grid;grid-template-columns:4fr 8fr;gap:0 3rem;margin-top:3rem;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-.keyset .lede{margin:0;padding:1.5rem 0 2rem;max-width:30ch}
-.keyf{display:grid;grid-template-columns:1fr;margin:0;align-content:start}
-.keyf>div{padding:1.125rem 0 1.25rem}
-.keyf>div+div{border-top:1px solid var(--hair)}
-.keyf.q{grid-template-columns:1fr 1fr}
-.keyf.q>div:nth-child(2){border-top:0}
-.keyf.q>div:nth-child(even){padding-left:1.5rem;border-left:1px solid var(--hair)}
-.keyf dt{font:400 .6875rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
-.keyf dd{margin:.5rem 0 0;font-size:1rem;line-height:1.4}
-@media (max-width:899px){.keyset{grid-template-columns:1fr}.keyf{border-top:1px solid var(--hair)}}
-@media (max-width:699px){.vintro{padding:2rem var(--gut) .5rem}.vintro h1{font-size:3.5rem}.keyset{margin-top:2rem}.keyset .lede{padding:1.25rem 0 1.5rem}}
-
 /* request */
 .vreq .reqone,.vreq .reqgrid{padding-top:3.5rem;padding-bottom:7rem}
 .request{display:grid;grid-template-columns:1fr 37.5rem;gap:6rem;padding:3.5rem var(--gut) 7rem}
@@ -326,23 +301,26 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
   .request .send{width:100%;justify-content:space-between;box-sizing:border-box}
 }
 
-/* the menu bar (desktop): top right, pale grey, Request a valuation on the end; the section you're in raised in white
-   with the yellow dot; Services drops down to its pages on hover */
+/* the menu bar (desktop): top right, Stone 200 with a hairline; the section you're in is raised in white (Stone 0) with the
+   yellow dot. Elevation by tint, no drop shadows (digital colour guideline, 1 Nov). Services drops down to its pages on hover */
+:root{--s0:#FFFFFF;--s50:#F8F6F2;--s100:#F2EEE6;--s150:#EAE5DC;--s200:#E2DCD1;--s300:#D6CFC1;--s400:#B9B1A3;--s500:#8C857A;--s600:#5A5650;--s700:#3A3935;--s800:#26251F;--s900:#141412;
+  --y100:#FBEED1;--y500:#EBAA1A;--sl100:#E3E9EE;--sl600:#677F90;--sl700:#516370}
 .vbar{display:none}
 @media (min-width:900px){
   .has-bar .site-header .nav{display:none}
-  .vbar{position:fixed;top:1.75rem;right:var(--gut);z-index:30;display:flex;align-items:stretch;height:3.25rem;background:#E2DCD1;box-shadow:0 .5rem 1.5rem rgba(20,20,18,.12)}
-  .vbar a{display:flex;align-items:center;gap:.625rem;padding:0 1.125rem;color:var(--grey);font:400 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color .15s}
-  .vbar a:hover{color:var(--ink)}
-  .vbar a.on{position:relative;margin:-.25rem 0;padding:0 1.375rem;background:var(--white);color:var(--ink);font-weight:600;box-shadow:0 0 0 1px rgba(20,20,18,.08),0 .375rem 1.125rem rgba(20,20,18,.16)}
-  .vbar a.on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow)}
-  .vbar .cta{background:var(--ink);color:var(--cream);padding:0 1.25rem;margin-left:.25rem;letter-spacing:.16em}
-  .vbar .cta:hover{color:var(--cream);background:#34332f}
+  .vbar{position:fixed;top:1.75rem;right:var(--gut);z-index:30;display:flex;align-items:stretch;height:3.25rem;background:var(--s200);box-shadow:inset 0 0 0 1px var(--s300)}
+  .vbar a{display:flex;align-items:center;gap:.625rem;padding:0 1.125rem;color:var(--s600);font:400 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
+  .vbar a:hover{color:var(--s900);background:var(--s150)}
+  .vbar a.on{padding:0 1.375rem;background:var(--s0);color:var(--s900);font-weight:600;box-shadow:inset 0 0 0 1px var(--s300)}
+  .vbar a.on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--y500)}
+  .vbar .cta{background:var(--s900);color:var(--s100);padding:0 1.25rem;letter-spacing:.16em}
+  .vbar .cta:hover{color:var(--s100);background:var(--s800)}
   .vbar .cta .dot{width:6px;height:6px}
   .vbar .dd{position:relative;display:flex}
-  .vbar .sub{position:absolute;top:100%;left:0;min-width:100%;padding:.375rem 0;background:#E2DCD1;box-shadow:0 .75rem 1.5rem rgba(20,20,18,.14);display:none;flex-direction:column}
+  .vbar .sub{position:absolute;top:100%;left:0;min-width:100%;padding:.375rem 0;background:var(--s200);box-shadow:inset 0 0 0 1px var(--s300);display:none;flex-direction:column}
   .vbar .dd.open .sub,.vbar .dd:hover .sub,.vbar .dd:focus-within .sub{display:flex}
   .vbar .sub a{padding:.875rem 1.375rem;height:auto}
-  .vbar .sub a.cur{color:var(--ink);font-weight:600}
-  .vbar .sub a.cur::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+  .vbar .sub a.cur{color:var(--s900);font-weight:600;background:var(--s0)}
+  .vbar .sub a.cur::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--y500)}
+  .vbar a:focus-visible{outline:2px solid var(--sl600);outline-offset:-2px}
 }
