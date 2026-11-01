@@ -257,6 +257,7 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .owned-text .lede{color:var(--cream)}
 .flow{font:400 2.5rem/1.25 var(--serif);max-width:26ch}
 .team-b .people{grid-template-columns:repeat(4,1fr)}
+.how-b .statement{max-width:44ch}  /* comment, 1 Nov: wider, so How we work doesn't look squeezed */
 @media (max-width:699px){.how-top{padding-top:3rem}.h1s{font-size:3rem}.flow{font-size:1.75rem}.owned{display:flex;min-height:34rem;align-items:flex-start;padding:3rem var(--gut)}.owned-text h2{font-size:3.25rem}.team-b .people{grid-template-columns:1fr 1fr}}
 @media (prefers-reduced-motion:reduce){.bloom-in canvas{animation:none}}
 
