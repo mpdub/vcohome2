@@ -312,6 +312,7 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .vreq .receipt{margin-top:2.25rem;padding:1.75rem 2rem 1.5rem;background:var(--s0);box-shadow:inset 0 0 0 1px var(--s300)}
 .vreq .receipt .ref{margin-top:0}
 .vreq .receipt .summary{border-bottom-color:var(--s300)}.vreq .receipt .summary>div{border-color:var(--s300)}
+.vreq .chip input:checked+span{background:#7E9DB4;border-color:#7E9DB4;color:var(--s900)}  /* comment, 1 Nov: a chosen option is slate blue; yellow is kept for the final action */
 .vreq .reqrow{display:grid;grid-template-columns:4fr 8fr;gap:3rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--ink)}
 .vreq .reqrow .sub{grid-column:auto;border:0;padding:0;font:400 .75rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase}
 .vreq .reqrow.last{border-top:0;margin-top:0;padding-top:0}
