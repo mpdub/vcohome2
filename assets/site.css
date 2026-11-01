@@ -211,15 +211,16 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.bloom canvas{animation:none!important;translate:none!important}}
 /* vertical site */
-@keyframes bloomfade{to{opacity:.3}}
+/* comment, 2 Nov: on scroll the blue layer fades away more and the yellow holds on (blue to 10%, yellow to 65%) */
+@keyframes bfade{to{opacity:.1}}
+@keyframes yfade{to{opacity:.65}}
 @keyframes yshift{to{translate:-3.3vw 1.2vw}}
 @keyframes bshift{to{translate:1.35vw -.45vw}}
 @supports (animation-timeline:scroll()){
-  .bloom{animation:bloomfade linear both;animation-timeline:scroll(root);animation-range:0 100vh}
-  .bloom .y{animation:drift 14s ease-in-out infinite alternate,yshift linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 150vh}
-  .bloom .b{animation:drift 19s ease-in-out infinite alternate-reverse,bshift linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 150vh}
+  .bloom .y{animation:drift 14s ease-in-out infinite alternate,yshift linear both,yfade linear both;animation-timeline:auto,scroll(root),scroll(root);animation-range:normal,0 150vh,0 100vh}
+  .bloom .b{animation:drift 19s ease-in-out infinite alternate-reverse,bshift linear both,bfade linear both;animation-timeline:auto,scroll(root),scroll(root);animation-range:normal,0 150vh,0 100vh}
 }
-@media (prefers-reduced-motion:reduce){.bloom{animation:none;opacity:.3}}
+@media (prefers-reduced-motion:reduce){.bloom .y,.bloom .b{animation:none}}
 .home .hero{min-height:22rem}
 .end{padding-bottom:7rem}
 
