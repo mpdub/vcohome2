@@ -273,6 +273,13 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .home-req .facts{margin-bottom:3.5rem}
 @media (max-width:699px){.home-people .people{grid-template-columns:1fr 1fr}.home-people .person:nth-child(5){display:none}}
 
+/* Request a valuation, always in the bottom right corner */
+.fab{position:fixed;right:var(--gut);bottom:1.75rem;z-index:30;display:flex;align-items:center;gap:.625rem;height:3.25rem;padding:0 1.375rem;background:var(--ink);color:var(--cream);font:400 .75rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;white-space:nowrap;box-shadow:0 .5rem 1.5rem rgba(20,20,18,.2);transition:background .15s}
+.fab:hover{background:#34332f;color:var(--cream)}
+.fab .dot{width:6px;height:6px}
+@media (max-width:699px){.fab{right:1rem;bottom:1rem;height:3rem;padding:0 1.125rem;font-size:.6875rem}}
+@media print{.fab{display:none}}
+
 /* request */
 .vreq .reqone,.vreq .reqgrid{padding-top:3.5rem;padding-bottom:7rem}
 .request{display:grid;grid-template-columns:1fr 37.5rem;gap:6rem;padding:3.5rem var(--gut) 7rem}
