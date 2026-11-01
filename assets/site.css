@@ -275,9 +275,9 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 @media (max-width:899px){.cards.two{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.card{min-height:0}}
 .home .more{margin-top:2rem}
 .faces .portrait{position:relative;overflow:hidden}
-.faces .cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:.25rem;padding:.875rem 1rem;background:var(--s900);color:var(--s100);opacity:0;transform:translateY(.5rem);transition:opacity .2s,transform .2s}
+.faces .cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:.25rem;padding:.875rem 1rem;background:#7E9DB4;color:var(--s900);opacity:0;transform:translateY(.5rem);transition:opacity .2s,transform .2s}
 .faces .cap b{font:400 1.25rem/1.15 var(--serif)}
-.faces .cap i{font:normal 400 .6875rem/1.4 var(--mono);letter-spacing:.06em;color:var(--s300)}
+.faces .cap i{font:normal 400 .6875rem/1.4 var(--mono);letter-spacing:.06em;color:var(--s900)}  /* slate blue, ink type 6.5:1 */
 .faces .person:focus-visible{outline:2px solid var(--sl600);outline-offset:3px}
 @media (hover:hover){.faces .person:hover .cap,.faces .person:focus-visible .cap{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.faces .cap{transition:none}}
