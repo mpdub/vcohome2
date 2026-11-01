@@ -297,6 +297,11 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 
 /* request */
 .vreq .reqone,.vreq .reqgrid{padding-top:3.5rem;padding-bottom:7rem}
+.vreq .reqrow{display:grid;grid-template-columns:4fr 8fr;gap:3rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--ink)}
+.vreq .reqrow .sub{grid-column:auto;border:0;padding:0;font:400 .75rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+.vreq .reqrow.last{border-top:0;margin-top:0;padding-top:0}
+.vreq .reqrow .send{margin-top:2.5rem}
+@media (max-width:899px){.vreq .reqrow{grid-template-columns:1fr;gap:1.25rem}}
 .request{display:grid;grid-template-columns:1fr 37.5rem;gap:6rem;padding:3.5rem var(--gut) 7rem}
 .request h1{font-size:5.25rem;line-height:.98;letter-spacing:-.02em}
 .request form{margin-top:3rem}
