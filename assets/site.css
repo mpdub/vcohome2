@@ -266,7 +266,10 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .card .d{margin-top:1rem;font-size:.9375rem;line-height:1.5;color:var(--grey)}
 .card .a{margin-top:auto;padding-top:1.5rem;align-self:flex-end}
 .card .arrow{width:1.75rem;display:block}
-@media (max-width:899px){.cards{grid-template-columns:1fr}.card{min-height:0}}
+
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.cards.two .card{min-height:13rem}
+@media (max-width:899px){.cards.two{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.card{min-height:0}}
 .home .more{margin-top:2rem}
 .home .owned{margin:2rem 0}
 .home-people .people{grid-template-columns:repeat(5,1fr)}
