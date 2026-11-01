@@ -190,6 +190,15 @@ VCOBloom.all();
     const spy = () => { let cur = secs[0]; for (const s of secs) if (s.getBoundingClientRect().top < innerHeight * .45) cur = s; mark(cur.dataset.nav); };
     addEventListener('scroll', spy, { passive: true }); spy();
   }
+  // the floating Request a valuation button inverts while it sits over a black section
+  const fab = d.querySelector('.fab'), darks = [...d.querySelectorAll('.dark, .site-footer')];
+  if (fab && darks.length) {
+    let q = 0;
+    const flip = () => { q = 0; const r = fab.getBoundingClientRect(), y = r.top + r.height / 2;
+      fab.classList.toggle('inv', darks.some(el => { const b = el.getBoundingClientRect(); return b.top <= y && b.bottom >= y; })); };
+    const ask = () => { if (!q) q = requestAnimationFrame(flip); };
+    addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask); flip();
+  }
   // request form: Send turns yellow once every field is filled; the confirmation replaces the form (prototype: nothing is sent)
   const form = d.querySelector('form.req');
   if (form) {
