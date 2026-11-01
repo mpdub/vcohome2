@@ -15,7 +15,8 @@ const VCOBloom = (() => {
     about:   { wide: [.02, .06, .46, .9], narrow: [.04, .56, .96, .985] },
     service: { wide: [.56, .03, .98, .5], narrow: [.3, .02, .98, .3] },
     request: { wide: [.62, .52, .98, .985], narrow: [.04, .6, .96, .985] },
-    menu:    { wide: [.04, .56, .96, .985], narrow: [.04, .56, .96, .985] }
+    menu:    { wide: [.04, .56, .96, .985], narrow: [.04, .56, .96, .985] },
+    box:     { wide: [.03, .08, .47, .92], narrow: [.06, .5, .94, .97] }   // a bloom held inside a black panel (about us)
   };
   const SHIFT = [137, -45];
   const BLUE = '#7E9DB4', YELLOW = '#EBAA1A', BOOST = 2.3, ANG = 20 * Math.PI / 180;
@@ -119,9 +120,9 @@ const VCOBloom = (() => {
   }
 
   const narrow = () => innerWidth < 700;
-  const size = () => { const dpr = Math.min(window.devicePixelRatio || 1, 2); return { W: innerWidth, H: innerHeight, dpr }; };
-  function paint(canvas, spec, which, zoneName) {
-    const { W, H, dpr } = size(), zone = ZONES[zoneName][narrow() ? 'narrow' : 'wide'];
+  const size = el => { const dpr = Math.min(window.devicePixelRatio || 1, 2); if (el) { const r = el.getBoundingClientRect(); return { W: r.width, H: r.height, dpr }; } return { W: innerWidth, H: innerHeight, dpr }; };
+  function paint(canvas, spec, which, zoneName, box) {
+    const { W, H, dpr } = size(box), zone = ZONES[zoneName][narrow() ? 'narrow' : 'wide'];
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
     const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height);
     layer(ctx, spec, which, W, H, dpr, zone); canvas.dataset.done = '1';
@@ -141,6 +142,11 @@ const VCOBloom = (() => {
     document.querySelectorAll('.bloom[data-bloom]').forEach(el => {
       const spec = SPECS[el.dataset.bloom]; if (!spec) return;
       el.querySelectorAll('canvas').forEach(c => paint(c, spec, c.classList.contains('y') ? 'y' : 'b', el.dataset.zone));
+    });
+    // blooms held inside a panel: sized to the panel, not the window
+    document.querySelectorAll('.bloom-in[data-bloom]').forEach(el => {
+      const spec = SPECS[el.dataset.bloom]; if (!spec) return;
+      el.querySelectorAll('canvas').forEach(c => paint(c, spec, c.classList.contains('y') ? 'y' : 'b', el.dataset.zone, el));
     });
   }
   let t = 0, lastW = innerWidth, lastH = innerHeight;
