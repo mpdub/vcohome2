@@ -15,6 +15,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:1rem;top:1rem;z-index:100;background:var(--ink);color:var(--cream);padding:.5rem 1rem}
+[hidden]{display:none!important}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .label{font:400 .75rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
 .dark .label,.on-ink .label{color:var(--sub)}
@@ -144,6 +145,35 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .menu .contact{position:relative;margin:3.5rem var(--gut) 3rem;font:400 .75rem/1.9 var(--mono);color:var(--sub)}
 .menu .mbloom{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
 
+/* request form and confirmation (both sites); selected choices and ready buttons in yellow */
+.reqgrid{display:grid;grid-template-columns:1fr 35rem;gap:6rem;align-items:start;padding:0 var(--gut)}
+.reqgrid h1,.reqgrid .title{font-size:4.5rem;line-height:.98;letter-spacing:-.02em}
+.statement.big{font-size:3.25rem;line-height:1.12;max-width:20ch}
+.reqgrid .form-grid{margin-top:2.5rem;gap:1.5rem}
+.reqgrid .go{margin-top:2.25rem}
+.summary{border-bottom:1px solid var(--ink);margin-top:1.125rem}
+.summary div{display:grid;grid-template-columns:7.5rem 1fr;gap:1.25rem;padding:.875rem 0;border-top:1px solid var(--ink)}
+.summary dt{font:400 .6875rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--grey);padding-top:.1875rem}
+.summary dd{margin:0}
+.chip input:checked+span{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.btn.ready,.btn.ghost.ready,.btn.ghost.ready:hover{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.reqone{padding:0 var(--gut)}
+.reqone h1{font-size:4.5rem;line-height:.98;letter-spacing:-.02em}
+.reqone .cols{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2.25rem}
+.reqone .form-grid{gap:1.25rem;align-content:start}
+.reqone .sub{grid-column:1/-1;font:400 .75rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;padding-bottom:.625rem;border-bottom:1px solid var(--ink)}
+.reqone .chip span{padding:.625rem .875rem;font-size:.875rem}
+.reqone .field textarea{height:6.5rem}
+.reqone .send{margin-top:2rem}
+.ref{font:400 .75rem/1 var(--mono);color:var(--grey);margin-top:1.125rem}
+.wrong{font-size:.875rem;color:var(--grey);margin-top:1.375rem}
+.summary div{padding:.6875rem 0}
+.reqgrid aside .steps .step{padding:1rem 0 1.125rem}
+.reqgrid aside .step h3{font-size:1.5rem}
+.reqgrid aside .step p{font-size:.875rem;margin-top:.375rem}
+@media (max-width:999px){.reqgrid{grid-template-columns:1fr;gap:3rem}.reqone .cols{grid-template-columns:1fr;gap:2.5rem}}
+@media (max-width:699px){.reqgrid h1,.reqgrid .title,.reqone h1{font-size:3rem}}
+
 .note{position:relative;padding:0 var(--gut) 1rem;font:400 .625rem/1.4 var(--mono);color:var(--grey);text-align:right}
 
 @media (max-width:899px){
@@ -213,6 +243,7 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
 .team .h2{margin-bottom:2.5rem}
 
 /* request */
+.vreq .reqone,.vreq .reqgrid{padding-top:3.5rem;padding-bottom:7rem}
 .request{display:grid;grid-template-columns:1fr 37.5rem;gap:6rem;padding:3.5rem var(--gut) 7rem}
 .request h1{font-size:5.25rem;line-height:.98;letter-spacing:-.02em}
 .request form{margin-top:3rem}
@@ -234,4 +265,18 @@ font:400 3.5rem/1 var(--serif);text-decoration:none;color:inherit}
   .request{padding:2.5rem var(--gut) 4rem}
   .request h1{font-size:3rem}
   .request .send{width:100%;justify-content:space-between;box-sizing:border-box}
+}
+
+/* the menu bar (desktop): pale grey, centred at the bottom; the section you're in raised in white with the yellow dot */
+.vbar{display:none}
+@media (min-width:900px){
+  .has-bar .site-header .nav>a:not(.btn){display:none}
+  .home .site-header .nav .btn{visibility:hidden}
+  .vbar{position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:30;display:flex;align-items:stretch;height:3.25rem;background:#E2DCD1;box-shadow:0 .5rem 1.5rem rgba(20,20,18,.12)}
+  .vbar a{display:flex;align-items:center;gap:.625rem;padding:0 1.25rem;color:var(--grey);font:400 .75rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color .15s}
+  .vbar a:hover{color:var(--ink)}
+  .vbar a.on{position:relative;margin:-.25rem 0;padding:0 1.5rem;background:var(--white);color:var(--ink);font-weight:600;box-shadow:0 0 0 1px rgba(20,20,18,.08),0 .375rem 1.125rem rgba(20,20,18,.16)}
+  .vbar a.on::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+  .vbar .grp{display:flex;align-items:stretch;background:#D6CFC1;padding:0 .25rem}
+  .site-footer{padding-bottom:6rem}
 }

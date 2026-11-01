@@ -177,11 +177,27 @@ VCOBloom.all();
     const f = () => { const p = scrollY / innerHeight; b.style.opacity = 1 - 0.7 * Math.min(1, p); b.style.setProperty('--bp', Math.min(1.5, p)); };
     addEventListener('scroll', f, { passive: true }); f();
   }
-  // request form (prototype: nothing is sent)
+  // the menu bar follows the section you're reading on the home page
+  const bar = d.querySelector('.vbar'), secs = [...d.querySelectorAll('[data-nav]')];
+  if (bar && secs.length > 1) {
+    const mark = name => bar.querySelectorAll('a[data-sec]').forEach(a => { const on = a.dataset.sec === name; a.classList.toggle('on', on); a.toggleAttribute('aria-current', on); });
+    const spy = () => { let cur = secs[0]; for (const s of secs) if (s.getBoundingClientRect().top < innerHeight * .45) cur = s; mark(cur.dataset.nav); };
+    addEventListener('scroll', spy, { passive: true }); spy();
+  }
+  // request form: Send turns yellow once every field is filled; the confirmation replaces the form (prototype: nothing is sent)
   const form = d.querySelector('form.req');
-  if (form) form.addEventListener('submit', e => {
-    e.preventDefault();
-    form.querySelector('.sent').hidden = false;
-    form.querySelector('[type=submit]').disabled = true;
-  });
+  if (form) {
+    const need = ['address', 'lender', 'type', 'name', 'phone', 'email'];
+    const val = k => { const el = form.elements[k]; return el ? String(el.value || '').trim() : ''; };
+    const send = form.querySelector('.send');
+    const check = () => { const ok = need.every(val); send.classList.toggle('ready', ok); return ok; };
+    form.addEventListener('input', check); form.addEventListener('change', check); check();
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!check()) { const el = form.elements[need.find(k => !val(k))]; if (el && el.focus) el.focus(); return; }
+      form.querySelectorAll('[data-sum]').forEach(dd => { dd.textContent = val(dd.dataset.sum) || '–'; });
+      const ref = form.querySelector('[data-ref]'); if (ref) ref.textContent = 'VCO-' + String(Date.now()).slice(-6);
+      d.getElementById('form').hidden = true; d.getElementById('sent').hidden = false; scrollTo(0, 0);
+    });
+  }
 })();
